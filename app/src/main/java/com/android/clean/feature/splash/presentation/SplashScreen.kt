@@ -30,8 +30,8 @@ fun SplashScreen(
         verticalArrangement = Arrangement.Center
     ) {
         CircularProgressIndicator(
-            color = MaterialTheme.colorScheme.onPrimary,
-            strokeWidth = 7.dp
+            color = MaterialTheme.colorScheme.secondary,
+            strokeWidth = 10.dp
         )
     }
 

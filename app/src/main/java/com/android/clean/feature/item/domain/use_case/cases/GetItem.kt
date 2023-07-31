@@ -6,7 +6,7 @@ import com.android.clean.feature.item.domain.repository.ItemRepository
 class GetItem(
     private val repository: ItemRepository
 ) {
-    suspend operator fun invoke(id: Int): Item? {
-        return repository.getItem(id)
+    suspend operator fun invoke(id: String): Item? {
+        return repository.getItem(id.toInt())
     }
 }

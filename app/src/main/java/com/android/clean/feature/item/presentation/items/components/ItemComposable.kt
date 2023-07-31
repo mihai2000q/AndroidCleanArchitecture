@@ -46,6 +46,7 @@ import com.android.clean.ui.theme.TriangleShapePath
 fun ItemComposable(
     item: Item,
     onDelete: () -> Unit,
+    onClick: () -> Unit,
     increaseQuantity: () -> Unit,
     decreaseQuantity: () -> Unit
 ) {
@@ -59,7 +60,10 @@ fun ItemComposable(
         Column(
             modifier = Modifier.weight(0.87f)
         ) {
-            Box {
+            Box(
+                modifier = Modifier
+                    .clickable { onClick() }
+            ) {
                 ColoredCard(
                     text = item.title,
                     modifier = Modifier.fillMaxWidth(),

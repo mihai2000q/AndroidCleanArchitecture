@@ -19,9 +19,11 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.android.clean.common.components.NavigationDrawerComposable
 import com.android.clean.common.components.SnackbarHostComposable
 import com.android.clean.common.components.TopAppBarComposable
@@ -69,7 +71,15 @@ fun NavGraphBuilder.cleanGraph(appState: CleanAppState) {
         appState.topAppBarVisibility.value = true
     }
 
-    composable(Screen.AddEditItemScreen()) {
+    composable(
+        route = Screen.AddEditItemScreen() + "?itemId={itemId}",
+        arguments = listOf(
+            navArgument(name = "itemId") {
+                type = NavType.StringType
+                defaultValue = ""
+            }
+        )
+    ) {
         AddEditItemScreen(appState = appState)
     }
 }

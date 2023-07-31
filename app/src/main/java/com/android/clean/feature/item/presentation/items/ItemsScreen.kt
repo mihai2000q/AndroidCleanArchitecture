@@ -67,6 +67,10 @@ fun ItemsScreen(
                     ItemComposable(
                         item = it,
                         onDelete = { viewModel.onEvent(ItemsEvent.DeleteItem(it)) },
+                        onClick = {
+                            appState.navigate(Screen.AddEditItemScreen() +
+                                    "?itemId=${it.id}")
+                        },
                         increaseQuantity = { viewModel.onEvent(ItemsEvent.IncreaseQuantity(it)) },
                         decreaseQuantity = { viewModel.onEvent(ItemsEvent.DecreaseQuantity(it)) }
                     )
